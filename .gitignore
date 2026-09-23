@@ -1,0 +1,61 @@
+# The Ox Tracker
+#
+# Nothing the app writes at runtime belongs in this repository. Settings,
+# cached usage numbers, logs, file-watch state and screenshots all live in
+# %LOCALAPPDATA%\TheOx. Only source, tests, the mockup and docs are tracked.
+
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+
+# PyInstaller output
+build/
+dist/
+*.spec
+!packaging/the-ox.spec
+
+# Virtual environments. The real one lives at %USERPROFILE%\.venvs\the-ox,
+# deliberately outside this folder.
+.venv/
+venv/
+env/
+ENV/
+
+# Runtime state, in case anything ever lands here by mistake
+*.log
+*.log.[0-9]
+settings.json
+usage-cache.json
+watch-state.json
+shots/
+debug/
+
+# Local instructions for this checkout only; never published
+CLAUDE.local.md
+
+# Credentials: never, under any circumstances
+.credentials.json
+auth.json
+*.pem
+*.key
+.env
+.env.*
+
+# Editor and OS clutter
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Google Drive leftovers, should this folder ever sit on a synced drive again
+.tmp.drive*
+*.gdoc
+*.gsheet
+
+# Screenshots for review, kept out of the repository
+review-shots/

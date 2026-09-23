@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ox Mockups</title>
+<style>
+:root{
+  --bg:#eef0f3; --ink:#1b1f24; --muted:#5c6570; --card:#fff; --line:#d9dde3;
+  --green:#2fb35a; --orange:#f08c1a; --red:#e03b3b; --fable:#3b82f6;
+  --claude:#a78bfa; --gpt:#e5e7eb; --grok:#22d3ee; --bot:#f472b6;
+  --glass:rgba(24,26,31,.95); --glass-ink:#f2f4f7; --glass-muted:#9aa3ad; --track:#3a3f47;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,sans-serif;padding:24px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:16px;margin:36px 0 6px}
+h3{font-size:14px;margin:0 0 10px}
+p.note{color:var(--muted);font-size:13.5px;margin:0 0 12px;max-width:880px;line-height:1.45}
+.wrap{max-width:1000px;margin:0 auto}
+.g{--s:var(--green)} .o{--s:var(--orange)} .r{--s:var(--red)} .f{--s:var(--fable)}
+.cl{--id:var(--claude)} .gp{--id:var(--gpt)} .gk{--id:var(--grok)} .bt{--id:var(--bot)}
+
+/* identity key */
+.key{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 4px}
+.key span{display:flex;align-items:center;gap:7px;background:#23262c;color:#eee;border-radius:8px;padding:6px 10px;font-size:12.5px;font-weight:600}
+.key i{width:14px;height:14px;background:var(--id);display:block}
+
+/* options board */
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.opt{background:#23262c;border-radius:10px;padding:14px;color:#ddd}
+.opt h3{color:#fff}
+.opt p{font-size:12px;color:#aab;margin:10px 0 0;line-height:1.4}
+.row4{display:flex;gap:10px;align-items:flex-end;height:70px;margin-top:6px}
+.cap{font-size:10.5px;color:#9aa;text-align:center;margin-top:5px}
+.big{transform:scale(2.2);transform-origin:bottom center;margin:0 18px}
+.realrow{display:flex;gap:5px;margin-top:12px;background:#1c1e22;padding:6px 8px;border-radius:6px;width:max-content}
+.realrow small{color:#888;font-size:10px;align-self:center;margin-right:6px}
+
+/* Option A: shapes */
+.A{width:24px;height:24px;background:var(--s);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
+.A.cl{border-radius:50%}
+.A.gp{border-radius:3px}
+.A.gk{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.A.bt{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);font-size:11px}
+
+/* Option B: identity band on top, status-colored number */
+.B{width:24px;height:24px;border-radius:4px;background:#111;overflow:hidden;display:flex;flex-direction:column;border:1px solid #333}
+.B b{height:8px;background:var(--id);color:#111;font-size:7px;line-height:8px;text-align:center;font-weight:900}
+.B em{flex:1;font-style:normal;color:var(--s);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
+
+/* Option C: status fill + thick identity ring */
+.C{width:24px;height:24px;border-radius:6px;background:var(--s);box-shadow:inset 0 0 0 3px var(--id);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
+
+/* desktop */
+.desk{position:relative;height:440px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#6c8fb3,#3d5a7a 55%,#2b4058)}
+.win{position:absolute;background:#f7f8fa;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.win .bar{height:28px;background:#e4e7eb;border-radius:8px 8px 0 0;font-size:12px;color:#444;padding:6px 10px}
+.taskbar{position:absolute;left:0;right:0;bottom:0;height:44px;background:rgba(28,30,34,.97);display:flex;align-items:center;justify-content:flex-end;padding:0 10px;gap:7px}
+.taskbar .start{position:absolute;left:28%;transform:translateX(-50%);display:flex;gap:8px}
+.taskbar .start span{width:26px;height:26px;border-radius:6px;background:#4b5260;display:block}
+.clock{color:#ddd;font-size:11px;text-align:right;line-height:1.25;margin-left:8px}
+
+/* biscuit */
+.biscuit{position:absolute;right:12px;bottom:52px;background:var(--glass);border-radius:12px;padding:5px;display:flex;gap:5px;box-shadow:0 6px 18px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)}
+.chip{display:flex;align-items:center;gap:8px;background:#2b2f36;border-radius:8px;padding:4px 9px 4px 0;border-left:5px solid var(--id);color:var(--glass-ink)}
+.chip .nm{font-size:10.5px;font-weight:800;color:var(--id);letter-spacing:.4px;padding-left:7px;min-width:44px}
+.bat{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.bat .l{font-size:8.5px;color:var(--glass-muted);font-weight:700;letter-spacing:.5px}
+.bat .line{display:flex;align-items:center;gap:4px}
+.cell{width:34px;height:11px;border:1.5px solid #8b939c;border-radius:3px;position:relative;padding:1px}
+.cell:after{content:"";position:absolute;right:-4px;top:2.5px;width:2px;height:4px;background:#8b939c}
+.cell i{display:block;height:100%;border-radius:1px;background:var(--s)}
+.pct{font-weight:800;font-size:11.5px;font-variant-numeric:tabular-nums;color:#fff}
+
+/* panel */
+.panel{position:absolute;right:12px;bottom:52px;width:310px;background:var(--glass);color:var(--glass-ink);border-radius:12px;padding:10px 10px 8px;box-shadow:0 10px 26px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.08);font-size:12px}
+.panel .top{display:flex;justify-content:space-between;align-items:center;margin:0 4px 8px}
+.panel .top span{color:var(--glass-muted);font-size:11px}
+.card{background:#2b2f36;border-radius:8px;border-left:5px solid var(--id);padding:7px 10px 6px;margin-bottom:6px}
+.card h4{margin:0 0 4px;font-size:11.5px;color:var(--id);letter-spacing:.4px;display:flex;justify-content:space-between}
+.card h4 span{color:var(--glass-muted);font-weight:400;letter-spacing:0;font-size:10.5px}
+.rw{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;margin:3px 0}
+.rw .k{color:#d7dce2}
+.track{height:8px;background:var(--track);border-radius:4px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--s)}
+.rw .v{text-align:right;font-weight:800}
+.rs{grid-column:2/4;color:var(--glass-muted);font-size:10px;margin-top:-3px}
+.foot{color:var(--glass-muted);font-size:10.5px;display:flex;justify-content:space-between;margin:2px 4px 0}
+
+/* battery tray icons */
+.ico{width:24px;height:24px;position:relative;display:inline-block;flex-shrink:0}
+.ico.s16{width:16px;height:16px}
+/* V: vertical */
+.V .body{position:absolute;left:4px;right:4px;top:3px;bottom:0;border:2px solid var(--id);border-radius:3px;background:#111;overflow:hidden}
+.V .cap{margin:0;position:absolute;left:8px;right:8px;top:0;height:3px;background:var(--id);border-radius:1px 1px 0 0}
+.V .fill{position:absolute;left:0;right:0;bottom:0;background:var(--s)}
+.V .n{position:absolute;inset:3px 0 0 0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:10.5px;letter-spacing:-.6px;text-shadow:0 0 2px #000,0 0 2px #000,0 0 3px #000}
+.s16.V .body{left:2px;right:2px;top:2px;border-width:1.5px}.s16.V .cap{left:5px;right:5px;height:2px}.s16.V .n{font-size:8px;inset:2px 0 0 0}
+/* H: horizontal */
+.H .body{position:absolute;left:0;right:3px;top:4px;bottom:4px;border:2px solid var(--id);border-radius:3px;background:#111;overflow:hidden}
+.H .cap{margin:0;position:absolute;right:0;top:9px;bottom:9px;width:3px;background:var(--id);border-radius:0 1px 1px 0}
+.H .fill{position:absolute;left:0;top:0;bottom:0;background:var(--s)}
+.H .n{position:absolute;left:0;right:3px;top:4px;bottom:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:10.5px;letter-spacing:-.6px;text-shadow:0 0 2px #000,0 0 2px #000,0 0 3px #000}
+.s16.H .body{top:3px;bottom:3px;border-width:1.5px}.s16.H .cap{top:6px;bottom:6px;width:2px}.s16.H .n{font-size:8px;top:3px;bottom:3px}
+/* T: twin cell for Claude */
+.T .cell2{position:absolute;top:3px;bottom:0;width:10px;border:2px solid var(--id);border-radius:2px;background:#111;overflow:hidden}
+.T .cell2.a{left:0}.T .cell2.b{right:0}
+.T .cap2{position:absolute;top:0;height:3px;width:4px;background:var(--id)}
+.T .cap2.a{left:3px}.T .cap2.b{right:3px}
+.T .fill{position:absolute;left:0;right:0;bottom:0;background:var(--s)}
+.zoomrow{display:flex;gap:0;align-items:flex-end;height:62px;padding-left:6px;overflow:hidden}
+.zoomrow .ico{transform:scale(2.1);transform-origin:bottom left;margin-right:46px}
+.sizes{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap}
+.sizes div{background:#1c1e22;padding:6px 8px;border-radius:6px;display:flex;gap:5px;align-items:center}
+.sizes small{color:#888;font-size:10px;margin-right:6px}
+
+/* muted level meters */
+:root{--mg:#6f9f7a;--mo:#c4995a;--mr:#c06a6a;--mtrack:#3b3f46;
+  --mcl:#a79fc4;--mgp:#c3c6cb;--mgk:#7fb0ba;--mbt:#bf94a9}
+.mg{--m:var(--mg)} .mo{--m:var(--mo)} .mr{--m:var(--mr)}
+.mcl{--mi:var(--mcl)} .mgp{--mi:var(--mgp)} .mgk{--mi:var(--mgk)} .mbt{--mi:var(--mbt)}
+.lvl{display:flex;align-items:center;gap:5px;height:9px}
+.lvl .t{width:46px;height:3px;background:var(--mtrack);border-radius:2px;overflow:hidden}
+.lvl .t i{display:block;height:100%;background:var(--m);border-radius:2px}
+.lvl .v{font-size:9.5px;font-weight:700;color:#d6d9de;font-variant-numeric:tabular-nums;width:22px}
+.tb-strip{display:flex;align-items:center;gap:12px;height:36px;padding:0 6px;margin-right:6px}
+.tb-svc{display:flex;align-items:center;gap:6px}
+.tb-svc .nm{font-size:9.5px;font-weight:700;color:var(--mi);letter-spacing:.3px;width:40px;text-align:right}
+.tb-svc .stack{display:flex;flex-direction:column;justify-content:center;gap:3px}
+.tb-demo{background:#1c1e22;border-radius:8px;padding:10px 12px;display:flex;align-items:center;justify-content:flex-end;gap:8px;overflow-x:auto}
+.tb-demo .clock{color:#ddd}
+.tb-zoom{transform:scale(1.8);transform-origin:left center;width:max-content;margin:18px 0 18px 4px}
+/* tray fallback icon */
+.ti2{width:24px;height:24px;position:relative;flex-shrink:0}
+.ti2 .a,.ti2 .b{position:absolute;left:1px;right:1px;height:3px;background:var(--mtrack);border-radius:2px;overflow:hidden}
+.ti2 .a{top:3px}.ti2 .b{top:9px}
+.ti2 .a i,.ti2 .b i{display:block;height:100%;background:var(--m)}
+.ti2 .n{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:11px;font-weight:800;color:#e6e8eb;line-height:12px}
+.ti2 .d{position:absolute;left:0;top:0;width:3px;height:3px;border-radius:50%;background:var(--mi);display:none}
+.fbrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.fbrow .z{display:flex;gap:6px;transform:scale(2.5);transform-origin:left top;margin:4px 0 38px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>The Ox: mockups, version 4</h1>
+<p class="note">The fix: every service now has its own identity color that never changes, and status (green, orange, red) is kept separate. Identity tells you WHICH service; status tells you HOW USED. The identity colors below were picked so none of them can be confused with green, orange or red. All numbers are percent used, sample data only.</p>
+<div class="key">
+  <span class="cl"><i style="border-radius:50%"></i>Claude: purple, circle</span>
+  <span class="gp"><i style="border-radius:2px"></i>ChatGPT: white, square</span>
+  <span class="gk"><i style="clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)"></i>Grok: cyan, hexagon</span>
+  <span class="bt"><i style="clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></i>Grok Bot: pink, diamond</span>
+</div>
+
+<h2>1. Taskbar: level lines</h2>
+<p class="note">Thin level lines like an audio meter. Top line is the 5 hour bucket, bottom line is the weekly allowance, number at the end of each. Grok and Grok Bot only have a weekly allowance, so they get one line. Colors are toned down: the service name is a soft tint, the line is a muted green, amber or red by percent used.</p>
+<h3>Option A: lives inside the taskbar, left of the tray (recommended)</h3>
+<div class="tb-demo" style="justify-content:flex-start"><div class="tb-zoom"><div class="tb-strip"><span class="tb-svc mcl"><span class="nm">CLAUDE</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:42%"></i></span><span class="v">42%</span></span><span class="lvl mo"><span class="t"><i style="width:67%"></i></span><span class="v">67%</span></span></span></span><span class="tb-svc mgp"><span class="nm">GPT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:18%"></i></span><span class="v">18%</span></span><span class="lvl mo"><span class="t"><i style="width:55%"></i></span><span class="v">55%</span></span></span></span><span class="tb-svc mgk"><span class="nm">GROK</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:31%"></i></span><span class="v">31%</span></span></span></span><span class="tb-svc mbt"><span class="nm">BOT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:12%"></i></span><span class="v">12%</span></span></span></span></div></div></div>
+<p class="note" style="margin-top:8px">Zoomed in above. Real size below, as it would sit in your taskbar:</p>
+<div class="tb-demo"><div class="tb-strip"><span class="tb-svc mcl"><span class="nm">CLAUDE</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:42%"></i></span><span class="v">42%</span></span><span class="lvl mo"><span class="t"><i style="width:67%"></i></span><span class="v">67%</span></span></span></span><span class="tb-svc mgp"><span class="nm">GPT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:18%"></i></span><span class="v">18%</span></span><span class="lvl mo"><span class="t"><i style="width:55%"></i></span><span class="v">55%</span></span></span></span><span class="tb-svc mgk"><span class="nm">GROK</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:31%"></i></span><span class="v">31%</span></span></span></span><span class="tb-svc mbt"><span class="nm">BOT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:12%"></i></span><span class="v">12%</span></span></span></span></div><div class="clock" style="font-size:11px;text-align:right;line-height:1.25">2:14 PM<br>9/21/2026</div></div>
+<p class="note" style="margin-top:8px">This gets around the square tray icon limit. The free open source tool TrafficMonitor draws text inside the Windows 11 taskbar the same way, so it can be done. It has to be tested on your Windows version.</p>
+<h3 style="margin-top:22px">Option B: fallback, one small tray icon per service</h3>
+<div class="tb-demo" style="justify-content:flex-start;align-items:flex-start;height:96px"><div class="fbrow"><span class="z"><span class="ti2 mcl"><span class="a mg"><i style="width:42%"></i></span><span class="b mo"><i style="width:67%"></i></span><span class="n">67</span></span><span class="ti2 mgp"><span class="a mg"><i style="width:18%"></i></span><span class="b mo"><i style="width:55%"></i></span><span class="n">55</span></span><span class="ti2 mgk"><span class="a mg"><i style="width:31%"></i></span><span class="n">31</span></span><span class="ti2 mbt"><span class="a mg"><i style="width:12%"></i></span><span class="n">12</span></span></span></div></div>
+<div class="tb-demo" style="margin-top:8px;justify-content:flex-start"><small style="color:#888;font-size:10px;margin-right:8px">real size</small><span class="ti2 mcl"><span class="a mg"><i style="width:42%"></i></span><span class="b mo"><i style="width:67%"></i></span><span class="n">67</span></span><span class="ti2 mgp"><span class="a mg"><i style="width:18%"></i></span><span class="b mo"><i style="width:55%"></i></span><span class="n">55</span></span><span class="ti2 mgk"><span class="a mg"><i style="width:31%"></i></span><span class="n">31</span></span><span class="ti2 mbt"><span class="a mg"><i style="width:12%"></i></span><span class="n">12</span></span></div>
+<p class="note" style="margin-top:8px">Only if Option A doesn't work on your PC. Both lines fit in the square, but only one number fits under them: the higher of the two. Hover shows both numbers.</p>
+
+<h2>2. The biscuit, with identity colors</h2>
+<p class="note">Each service sits in its own capsule with its identity color on the left edge and its full name. Batteries are labeled in words (5 HR, WEEK, FABLE) above each one. Battery fill is status color, Fable stays blue.</p>
+<div class="desk">
+  <div class="win" style="left:40px;top:30px;width:560px;height:300px"><div class="bar">Xactimate</div></div>
+  <div class="win" style="left:330px;top:70px;width:520px;height:290px"><div class="bar">Chrome</div></div>
+  <div class="biscuit">
+    <div class="chip cl"><span class="nm">CLAUDE</span>
+      <div class="bat g"><span class="l">5 HR</span><span class="line"><span class="cell"><i style="width:42%"></i></span><span class="pct">42%</span></span></div>
+      <div class="bat o"><span class="l">WEEK</span><span class="line"><span class="cell"><i style="width:67%"></i></span><span class="pct">67%</span></span></div>
+      <div class="bat f"><span class="l">FABLE</span><span class="line"><span class="cell"><i style="width:24%"></i></span><span class="pct">24%</span></span></div>
+    </div>
+    <div class="chip gp"><span class="nm">CHATGPT</span>
+      <div class="bat g"><span class="l">5 HR</span><span class="line"><span class="cell"><i style="width:18%"></i></span><span class="pct">18%</span></span></div>
+      <div class="bat o"><span class="l">WEEK</span><span class="line"><span class="cell"><i style="width:55%"></i></span><span class="pct">55%</span></span></div>
+    </div>
+    <div class="chip gk"><span class="nm">GROK</span>
+      <div class="bat g"><span class="l">WEEK</span><span class="line"><span class="cell"><i style="width:31%"></i></span><span class="pct">31%</span></span></div>
+    </div>
+    <div class="chip bt"><span class="nm">GROK BOT</span>
+      <div class="bat g"><span class="l">WEEK</span><span class="line"><span class="cell"><i style="width:12%"></i></span><span class="pct">12%</span></span></div>
+    </div>
+  </div>
+  <div class="taskbar">
+    <div class="start"><span></span><span></span><span></span><span></span><span></span></div><div class="tb-strip"><span class="tb-svc mcl"><span class="nm">CLAUDE</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:42%"></i></span><span class="v">42%</span></span><span class="lvl mo"><span class="t"><i style="width:67%"></i></span><span class="v">67%</span></span></span></span><span class="tb-svc mgp"><span class="nm">GPT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:18%"></i></span><span class="v">18%</span></span><span class="lvl mo"><span class="t"><i style="width:55%"></i></span><span class="v">55%</span></span></span></span><span class="tb-svc mgk"><span class="nm">GROK</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:31%"></i></span><span class="v">31%</span></span></span></span><span class="tb-svc mbt"><span class="nm">BOT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:12%"></i></span><span class="v">12%</span></span></span></span></div><div class="clock">2:14 PM<br>9/21/2026</div>
+  </div>
+</div>
+
+<h2>3. Corner panel, with identity colors</h2>
+<p class="note">Same idea: one card per service, identity color on the edge and in the heading, status color in the bars.</p>
+<div class="desk" style="height:620px">
+  <div class="win" style="left:40px;top:30px;width:600px;height:330px"><div class="bar">Xactimate</div></div>
+  <div class="panel">
+    <div class="top"><b>AI Usage</b><span>pinned &nbsp; x</span></div>
+    <div class="card cl"><h4>CLAUDE <span>updated 2 min ago</span></h4>
+      <div class="rw g"><span class="k">5 hour</span><div class="track"><i style="width:42%"></i></div><span class="v">42%</span><span class="rs">resets 4:30 PM</span></div>
+      <div class="rw o"><span class="k">Weekly</span><div class="track"><i style="width:67%"></i></div><span class="v">67%</span><span class="rs">resets Thu 9:00 AM</span></div>
+      <div class="rw f"><span class="k" style="color:#9aa3ad">Fable</span><div class="track"><i style="width:24%"></i></div><span class="v">24%</span><span class="rs">counts inside Weekly</span></div>
+    </div>
+    <div class="card gp"><h4>CHATGPT (WORK) <span>updated 3 min ago</span></h4>
+      <div class="rw g"><span class="k">5 hour</span><div class="track"><i style="width:18%"></i></div><span class="v">18%</span><span class="rs">resets 5:02 PM</span></div>
+      <div class="rw o"><span class="k">Weekly</span><div class="track"><i style="width:55%"></i></div><span class="v">55%</span><span class="rs">resets Mon 7:15 PM</span></div>
+    </div>
+    <div class="card gk"><h4>GROK <span>updated 1 min ago</span></h4>
+      <div class="rw g"><span class="k">Weekly</span><div class="track"><i style="width:31%"></i></div><span class="v">31%</span><span class="rs">resets Sat 11:00 PM</span></div>
+    </div>
+    <div class="card bt"><h4>GROK BOT <span>updated 1 min ago</span></h4>
+      <div class="rw g"><span class="k">Weekly</span><div class="track"><i style="width:12%"></i></div><span class="v">12%</span><span class="rs">resets Tue 3:00 AM</span></div>
+    </div>
+    <div class="foot"><span>Paused while locked</span><span>Refresh now</span></div>
+  </div>
+  <div class="taskbar">
+    <div class="start"><span></span><span></span><span></span><span></span><span></span></div><div class="tb-strip"><span class="tb-svc mcl"><span class="nm">CLAUDE</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:42%"></i></span><span class="v">42%</span></span><span class="lvl mo"><span class="t"><i style="width:67%"></i></span><span class="v">67%</span></span></span></span><span class="tb-svc mgp"><span class="nm">GPT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:18%"></i></span><span class="v">18%</span></span><span class="lvl mo"><span class="t"><i style="width:55%"></i></span><span class="v">55%</span></span></span></span><span class="tb-svc mgk"><span class="nm">GROK</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:31%"></i></span><span class="v">31%</span></span></span></span><span class="tb-svc mbt"><span class="nm">BOT</span><span class="stack"><span class="lvl mg"><span class="t"><i style="width:12%"></i></span><span class="v">12%</span></span></span></span></div><div class="clock">2:14 PM<br>9/21/2026</div>
+  </div>
+</div>
+</div>
+</body>
+</html>

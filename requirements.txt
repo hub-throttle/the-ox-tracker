@@ -1,0 +1,53 @@
+# The Ox Tracker: what the app needs to RUN. Exact pins with hashes.
+#
+# Taken from the venv at %USERPROFILE%\.venvs\the-ox on 2026-09-22,
+# Python 3.14.7 on Windows, and verified against PyPI.
+#
+# Install with:
+#
+#   python -m pip install -r requirements.txt --require-hashes
+#
+# --require-hashes makes pip refuse any file whose SHA-256 does not match,
+# so a package that is replaced upstream, or swapped in transit, fails the
+# install instead of running. Every line below is pinned to one exact
+# version, which --require-hashes also requires.
+#
+# The hashes are for the Windows wheels this app is built and run against.
+# Installing on another platform needs that platform's own hashes.
+#
+# Three direct dependencies:
+#   PySide6      the windows and all drawing
+#   pywin32      Windows APIs not reachable through ctypes
+#   requests     the only HTTP client, used solely by the_ox/net.py
+#
+# Everything else is one of their transitive requirements.
+#
+# PyInstaller is NOT here. It is a build tool, pinned with its own
+# dependencies in requirements-build.txt, and installed only into the
+# separate build venv. No package is pinned in both files, so the two can
+# never disagree about a version.
+#
+# cryptography was removed on 2026-09-22. It was installed for the Grok Bot
+# login work that was stopped and is never coming back, and nothing in the
+# app imports it. Its own dependencies, cffi and pycparser, went with it.
+
+certifi==2026.7.22 \
+    --hash=sha256:62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775
+charset-normalizer==3.5.1 \
+    --hash=sha256:c658c50ac0c98cd755a2dd50b7977d3bca7df401dcc47fbdfa87db53ef7d4e8b
+idna==3.20 \
+    --hash=sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c
+PySide6==6.11.2 \
+    --hash=sha256:3201d67e3c10be2eaedd3910ff0f02351eca7e88c95a291cde5e7f2f55ef207f
+PySide6_Addons==6.11.2 \
+    --hash=sha256:f449ea4431da20e7b86752cca8d166f93434516fe417f981c27e5f8e1b554407
+PySide6_Essentials==6.11.2 \
+    --hash=sha256:c8a29def77032773a30879f7f24415b5395ad08592d147c170824ef4c735dfc1
+pywin32==312 \
+    --hash=sha256:a4dd3a848290ef724347b19f301045831d8e802fa4464f491b98b1e0a081432e
+requests==2.34.2 \
+    --hash=sha256:2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0
+shiboken6==6.11.2 \
+    --hash=sha256:6ab0eba1c904455df621f9a6df3ca2bb896bab8670572d2bc4e37804ae91f19a
+urllib3==2.8.0 \
+    --hash=sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3

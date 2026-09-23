@@ -1,0 +1,38 @@
+# The Ox Tracker: build tools only. Exact pins with hashes.
+#
+# These go into a SEPARATE build venv, by default
+# %USERPROFILE%\.venvs\the-ox-build, never into the runtime venv.
+# packaging\build.ps1 creates that venv and installs, in this order:
+#
+#   python -m pip install -r requirements-build.txt --require-hashes
+#   python -m pip install -r requirements.txt       --require-hashes
+#
+# The second line is there because PyInstaller can only freeze what is
+# installed next to it, so the build venv needs the app's own dependencies
+# as well. Both files are installed with --require-hashes: a package whose
+# SHA-256 does not match is refused rather than frozen into the app.
+#
+# PyInstaller and everything it depends on, verified against PyPI on
+# 2026-09-22. This is the ONLY file that pins them: requirements.txt holds
+# the app's runtime packages and nothing else, and no package appears in
+# both files, so the build venv can never be asked for two different
+# versions of the same thing. tests/test_guards.py checks that.
+#
+# No UPX. PyInstaller only uses UPX if it finds it, and the build script
+# passes --noupx regardless: compressed executables are a common reason for
+# antivirus false positives, and they save little for a one-folder app.
+
+altgraph==0.17.5 \
+    --hash=sha256:f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597
+packaging==26.3 \
+    --hash=sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c
+pefile==2024.8.26 \
+    --hash=sha256:76f8b485dcd3b1bb8166f1128d395fa3d87af26360c2358fb75b80019b957c6f
+pyinstaller==6.22.3 \
+    --hash=sha256:500bd58c7bf7e584a8435adccbd763a0b918d5c12b08d74ff50fd79b2915458b
+pyinstaller-hooks-contrib==2026.7 \
+    --hash=sha256:24257a04c7a5a7a034cf28e39dcee20fbeeb9f043076729480f2e1b69904408a
+pywin32-ctypes==0.2.3 \
+    --hash=sha256:8a1513379d709975552d202d942d9837758905c8d01eb82b8bcc30918929e7b8
+setuptools==84.0.0 \
+    --hash=sha256:51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670
